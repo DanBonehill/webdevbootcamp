@@ -39,7 +39,7 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 app.get("/", function(req, res) {
     res.render("landing");
 });
-// Campgrounds page route
+// Campgrounds page route - INDEX
 app.get("/campgrounds", function(req, res) {
     // Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds) {
@@ -50,7 +50,7 @@ app.get("/campgrounds", function(req, res) {
         }
     });
 });
-// Campgrounds page Post route
+// Campgrounds page Post route - CREATE
 app.post("/campgrounds", function(req, res) {
     // get data from form & add to campgrounds array
     var name = req.body.name;
@@ -69,6 +69,7 @@ app.post("/campgrounds", function(req, res) {
         }
     });
 });
+// Show form to create new campground - NEW
 app.get("/campgrounds/new", function(req, res) {
     res.render("new");
 });
