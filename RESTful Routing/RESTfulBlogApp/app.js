@@ -1,7 +1,8 @@
 var express     = require("express"),
     app         = express(),
-    bodyParer   = require("body-parser"),
-    mongoose    = require("mongoose");
+    bodyParser   = require("body-parser"),
+    mongoose    = require("mongoose"),
+    methodOverride = require("method-override");
 
 // App Config
 // Connects to (or creates) the database collection    
@@ -9,7 +10,8 @@ mongoose.connect("mongodb://localhost/restful_blog_app");
 // Sets default file type to ejs
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-app.use(bodyParer.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 // Mongoose/ Model Config
 var blogSchema = new mongoose.Schema({
     title: String,
@@ -70,7 +72,13 @@ app.get("/blogs/:id/edit", function(req, res) {
 });
 // Update Route
 app.put("/blogs/:id", function(req, res) {
-    res.sned("Update Route");
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog) {
+        if (err) {
+            res.redirect("/blogs");
+        } else {
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
 });
 // Server listening for start command
 app.listen(process.env.PORT, process.env.IP, function() {
