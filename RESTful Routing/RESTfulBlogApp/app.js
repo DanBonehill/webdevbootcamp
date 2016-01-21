@@ -80,6 +80,16 @@ app.put("/blogs/:id", function(req, res) {
         }
     });
 });
+// Destroy Route
+app.delete("/blogs/:id", function(req, res) {
+    Blog.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            res.redirect("/blogs");
+        } else {
+            res.redirect("/blogs");
+        }
+    });
+});
 // Server listening for start command
 app.listen(process.env.PORT, process.env.IP, function() {
    console.log("Server Started"); 
