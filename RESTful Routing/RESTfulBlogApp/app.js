@@ -58,6 +58,20 @@ app.get("/blogs/:id", function(req, res) {
         }
     });
 });
+// Edit Route
+app.get("/blogs/:id/edit", function(req, res) {
+    Blog.findById(req.params.id, function(err, foundBlog) {
+        if (err) {
+            res.redirect("/blogs");
+        } else {
+            res.render("edit", {blog: foundBlog});    
+        }
+    });
+});
+// Update Route
+app.put("/blogs/:id", function(req, res) {
+    res.sned("Update Route");
+});
 // Server listening for start command
 app.listen(process.env.PORT, process.env.IP, function() {
    console.log("Server Started"); 
