@@ -2,10 +2,12 @@ var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose"),
-    Campground  = require("./models/campground");
+    Campground  = require("./models/campground"),
+    seedDB      = require("./seeds");
 
+seedDB();
 //Connects Mongoose to MongoDB
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://localhost/yelp_camp_v3");
 
 // Tells express to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
