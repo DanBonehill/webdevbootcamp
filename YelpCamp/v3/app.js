@@ -5,14 +5,13 @@ var express     = require("express"),
     Campground  = require("./models/campground"),
     seedDB      = require("./seeds");
 
-seedDB();
 //Connects Mongoose to MongoDB
 mongoose.connect("mongodb://localhost/yelp_camp_v3");
-
 // Tells express to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 // Sets the file type to ejs unless stated otherwise
 app.set("view engine", "ejs");
+seedDB();
 
 // Define routes
 // Landing page route
