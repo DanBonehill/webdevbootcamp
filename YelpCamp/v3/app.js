@@ -14,21 +14,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Sets the file type to ejs unless stated otherwise
 app.set("view engine", "ejs");
 
-// Campground.create(
-//     {
-//         name: "Stoney Creek", 
-//         image: "https://farm4.staticflickr.com/3859/15123592300_6eecab209b.jpg",
-//         description: "This is a huge campground, no bathrooms. No water. Beautiful scenery"
-//     }, 
-//     function(err, campground) {
-//       if (err) {
-//           console.log(err);
-//       } else {
-//           console.log("New Campground:");
-//           console.log(campground);
-//    }
-// });
-
 // Define routes
 // Landing page route
 app.get("/", function(req, res) {
@@ -73,10 +58,11 @@ app.get("/campgrounds/new", function(req, res) {
 // Shows more info about 1 campground
 app.get("/campgrounds/:id", function(req, res) {
     // Find camground with ID
-    Campground.findById(req.params.id, function(err, foundCampground) {
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground) {
        if (err) {
            console.log(err);
        } else {
+           console.log(foundCampground);
            // Render show tempalte with that campground
            res.render("show", {campground: foundCampground});
        }
