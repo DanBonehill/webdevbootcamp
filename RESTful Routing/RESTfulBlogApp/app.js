@@ -94,6 +94,10 @@ app.delete("/blogs/:id", function(req, res) {
         }
     });
 });
+// About Route
+app.get("/about", function(req, res) {
+   res.render("about"); 
+});
 // Server listening for start command
 app.listen(process.env.PORT, process.env.IP, function() {
    console.log("Server Started"); 
