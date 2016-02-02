@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost/yelp_camp_v3");
 app.use(bodyParser.urlencoded({extended: true}));
 // Sets the file type to ejs unless stated otherwise
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
 seedDB();
 
 // Define routes
