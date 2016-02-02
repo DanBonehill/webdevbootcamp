@@ -7,7 +7,7 @@ var express                 = require("express"),
     passportLocalMongoose   = require("passport-local-mongoose"),
     app                     = express();
     
-mongoose.connect("mongodb://localhost/autho_demo_app");
+mongoose.connect("mongodb://localhost/auth_demo_app");
 
 app.set("view engine", "ejs");
 
