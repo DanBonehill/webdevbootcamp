@@ -67,7 +67,8 @@ app.post("/login", passport.authenticate("local", {
 // Logout Routes
 // ============= //
 app.get("/logout", function(req, res) {
-     
+     req.logout();
+     res.redirect("/");
 });
 // ================== //
 // Server Start Route
