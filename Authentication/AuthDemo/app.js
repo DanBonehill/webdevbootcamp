@@ -63,7 +63,15 @@ app.post("/login", passport.authenticate("local", {
     failureRedirect: "/login"
 }) ,function(req, res) {
 });
-
+// ============= //
+// Logout Routes
+// ============= //
+app.get("/logout", function(req, res) {
+     
+});
+// ================== //
+// Server Start Route
+// ================== //
 app.listen(process.env.PORT, process.env.IP, function() {
    console.log("Server Started");
 });
