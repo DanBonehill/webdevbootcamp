@@ -10,7 +10,7 @@ var express         = require("express"),
     seedDB          = require("./seeds");
 
 //Connects Mongoose to MongoDB
-mongoose.connect("mongodb://localhost/yelp_camp_v3");
+mongoose.connect("mongodb://localhost/yelp_camp_v6");
 // Tells express to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 // Sets the file type to ejs unless stated otherwise
