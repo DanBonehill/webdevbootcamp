@@ -18,6 +18,18 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 seedDB();
 
+// Passport Configuration
+app.use(require("express-session")({
+    secret: "Yelpcamp Application is the best Application",
+    resave: false,
+    saveUnitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // Define routes
 // Landing page route
 app.get("/", function(req, res) {
