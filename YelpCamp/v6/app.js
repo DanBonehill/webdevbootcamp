@@ -132,6 +132,9 @@ app.post("/register", function(req, res) {
       });
    });
 });
+app.get("/login", function(req, res) {
+   res.render("login"); 
+});
 // Error message if unexpected route requested
 app.get("*", function(req, res) {
    res.send("Error: Page Not Found"); 
