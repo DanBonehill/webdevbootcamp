@@ -142,7 +142,7 @@ app.post("/login", passport.authenticate("local",
     }), function(req, res) {
 });
 app.get("/logout", function(req, res) {
-   res.logout();
+   req.logout();
    res.redirect("/campgrounds");
 });
 // Error message if unexpected route requested
