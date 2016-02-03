@@ -114,6 +114,12 @@ app.post("/campgrounds/:id/comments", function(req, res) {
       }
    });
 });
+// ============ //
+// Auth Routes //
+// =========== //
+app.get("/register", function(req, res) {
+   res.render("register"); 
+});
 // Error message if unexpected route requested
 app.get("*", function(req, res) {
    res.send("Error: Page Not Found"); 
