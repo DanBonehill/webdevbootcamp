@@ -135,6 +135,16 @@ app.post("/register", function(req, res) {
 app.get("/login", function(req, res) {
    res.render("login"); 
 });
+app.post("/login", passport.authenticate("local",
+    {
+        sucessRedirect: "/campgrounds", 
+        failureRedirect: "/login"
+    }), function(req, res) {
+});
+app.get("/logout", function(req, res) {
+   res.logout();
+   res.redirect("/campgrounds");
+});
 // Error message if unexpected route requested
 app.get("*", function(req, res) {
    res.send("Error: Page Not Found"); 
