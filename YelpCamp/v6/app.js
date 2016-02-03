@@ -22,7 +22,7 @@ seedDB();
 app.use(require("express-session")({
     secret: "Yelpcamp Application is the best Application",
     resave: false,
-    saveUnitialized: false
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
