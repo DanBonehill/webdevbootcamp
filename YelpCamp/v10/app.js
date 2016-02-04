@@ -16,13 +16,13 @@ var commentRoutes       = require("./routes/comments"),
     indexRoutes         = require("./routes/index");
 
 //Connects Mongoose to MongoDB
-mongoose.connect("mongodb://localhost/yelp_camp_v8");
+mongoose.connect("mongodb://localhost/yelp_camp_v10");
 // Tells express to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 // Sets the file type to ejs unless stated otherwise
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-// seedDB(); Seed Database
+app.use(methodOverride("_method"));
 
 // Passport Configuration
 app.use(require("express-session")({
