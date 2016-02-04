@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
     });
 });
 // Campgrounds page Post route - CREATE
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", function(req, res) {
     // get data from form & add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
@@ -35,7 +35,7 @@ router.post("/", isLoggedIn, function(req, res) {
     });
 });
 // Show form to create new campground - NEW
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", function(req, res) {
     res.render("campgrounds/new");
 });
 // Shows more info about campground
@@ -51,11 +51,4 @@ router.get("/:id", function(req, res) {
        }
     });
 });
-// Middleware to check if user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 module.exports = router;
