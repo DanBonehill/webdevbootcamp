@@ -40,13 +40,6 @@ router.get("/logout", function(req, res) {
    req.logout();
    res.redirect("/campgrounds");
 });
-// Middleware to check if user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 // Error message if unexpected route requested
 router.get("*", function(req, res) {
    res.send("Error: Page Not Found"); 
