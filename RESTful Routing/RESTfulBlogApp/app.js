@@ -6,7 +6,7 @@ var express             = require("express"),
     expressSanitizer    = require("express-sanitizer");
 
 // App Config
-// Connects to (or creates) the database collection    
+// Connects to (or creates) the database collection 
 mongoose.connect("mongodb://localhost/restful_blog_app");
 // Sets default file type to ejs
 app.set("view engine", "ejs");
