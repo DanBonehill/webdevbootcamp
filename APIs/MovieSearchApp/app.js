@@ -3,9 +3,14 @@ var express = require("express"),
     app     = express();
     
 app.set("view engine", "ejs");
-    
+
+app.get("/", function(req, res) {
+    res.render("search");
+});
 app.get("/results", function(req, res) {
-    request("http://omdbapi.com/?s=Star", function(err, response, body) {
+    var query = req.query.search;
+    var url = "http://omdbapi.com/?s=" + query
+    request(url, function(err, response, body) {
         if (!err && response.statusCode === 200) {
             var data = JSON.parse(body);
             res.render("results", {data: data});
